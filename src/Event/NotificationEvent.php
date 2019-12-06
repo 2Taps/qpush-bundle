@@ -34,6 +34,12 @@ class NotificationEvent extends Event
      * A Subscription Notification Type
      */
     const TYPE_SUBSCRIPTION  = 'SubscriptionNotification';
+
+    /**
+     * A Subscription Confirmation Type
+     */
+    const TYPE_SUBSCRIPTION_CONFIRMATION = 'SubscriptionConfirmation';
+
     /**
      * A Message Notification Type
      */
