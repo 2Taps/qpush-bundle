@@ -62,6 +62,14 @@ class RequestListener {
 		}
 
 		if ($event->getRequest()->headers->has('x-amz-sns-message-type')) {
+			if ($event->getRequest()->headers->has('x-amz-sns-topic-arn')) {
+				$topicArn = $event->getRequest()->headers->get('x-amz-sns-topic-arn');
+				$pattern = '/webhook/';
+				if(preg_match($pattern, $topicArn)) {
+					return;
+				}
+			}
+
 			$result = $this->handleSnsNotifications($event);
 			$event->setResponse(new Response($result, 200));
 		}
